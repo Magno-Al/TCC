@@ -1,0 +1,31 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{abakos}
+\usepackage{abntex2cite}
+\input{autores}
+
+\begin{document}
+
+\input{capa}
+\input{capitulos/0_resumos/0_resumo_template}
+
+\newpage
+
+\selectlanguage{brazilian}
+ \onehalfspace  % espaçamento 1.5 entre linhas
+ \setlength{\parindent}{1.25cm}
+
+\input{capitulos/1_introducao/1_introducao}
+\input{capitulos/2_fundamentacao/2_fundamentacao}
+\input{capitulos/3_correlatos/3_correlatos}
+\input{capitulos/4_metodologia/4_metodologia}
+\input{capitulos/5_resultados/5_resultados}
+\input{capitulos/6_conclusao/6_conclusao}
+
+\newpage
+
+\bibliographystyle{abntex2-alf}
+\bibliography{bibliografia}
+
+\end{document}

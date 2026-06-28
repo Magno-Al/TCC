@@ -1,0 +1,51 @@
+\section{Metodologia}
+\label{Metodologia}
+
+% %Aqui precisamos colocar um diagrama/arquitetura mostrando o fluxo%
+% A metodologia adotada neste trabalho compreende o desenvolvimento integrado de um sistema embarcado para o monitoramento contínuo de sinais vitais e a construção de modelos de aprendizado de máquina para a predição antecipada do do NEWS2. O sistema é estruturado em três camadas: (i) a camada de aquisição, composta pelos sensores responsáveis pela coleta dos parâmetros fisiológicos do paciente; (ii) a camada de processamento embarcado, encarregada do pré-processamento dos sinais, do cálculo NEWS2 atual e da execução do modelo preditivo; e (iii) a camada de saída, responsável pela exibição dos escores e pela sinalização de alertas à equipe assistencial. Para o desenvolvimento e a validação dos modelos preditivos, são utilizados dados clínicos provenientes de bases públicas de pacientes hospitalizados \cite{REYNA}, sendo treinados e comparados três algoritmos com vieses indutivos distintos, de modo a identificar a abordagem mais adequada ao contexto de execução embarcada. A Figura 1 ilustra a arquitetura geral do sistema proposto. 
+
+% %acho que é essencial colocarmos a arquitetura/figura do sistema%
+
+Esta seção apresenta primeiramente os materiais escolhidos para o desenvolvimento do dispositivo, bem como a justificativa para o seu uso. Em seguida, para a descrição do método, adotou-se uma abordagem dividida em etapas direcionadas ao hardware e etapas direcionadas ao software. As etapas voltadas ao hardware abrangem a montagem física do dispositivo e a integração entre a placa de processamento, os sensores e os periféricos. Já as etapas voltadas ao software contemplam a configuração do sistema operacional embarcado, a comunicação com os sensores, o processamento dos sinais fisiológicos, o cálculo do escore NEWS2 e o desenvolvimento do modelo preditivo de deterioração clínica.
+
+\input{capitulos/4_metodologia/4.1_materiais}
+% \input{capitulos/4_metodologia/4.1.1_plataforma}
+% \input{capitulos/4_metodologia/4.1.2_sensoriamento}
+% \input{capitulos/4_metodologia/4.1.3_periféricos}
+% \input{capitulos/4_metodologia/4.1.4_alimentacao}
+% \input{capitulos/4_metodologia/4.1.5_elementos_mecanicos}
+% \input{capitulos/4_metodologia/4.1.6_ferramentas}
+
+\input{capitulos/4_metodologia/4.2_metodo}
+
+\subsection{Cronograma de TCC II}
+
+A continuidade do trabalho no TCC II está organizada nas atividades apresentadas na Tabela~\ref{tableCronograma}, distribuídas ao longo do semestre seguinte. As frentes de \textit{hardware}, \textit{software} embarcado e modelo preditivo evoluem de forma paralela e convergem para os testes integrados e a validação do sistema.
+
+\begin{table}[H]
+\centering
+\caption{Cronograma das atividades previstas para o TCC II.}
+\label{tableCronograma}
+\footnotesize
+\begin{tabular}{|p{6.5cm}|c|c|c|c|c|}
+\hline
+\textbf{Atividade} & \textbf{Ago} & \textbf{Set} & \textbf{Out} & \textbf{Nov} & \textbf{Dez} \\
+\hline
+Treinamento e avaliação dos modelos preditivos & X & X & X &  &  \\
+\hline
+Montagem física final do dispositivo & X & X &  &  &  \\
+\hline
+Integração do \textit{software} embarcado &  & X & X & X &  \\
+\hline
+Embarque do modelo preditivo no dispositivo &  &  & X & X &  \\
+\hline
+Testes integrados e validação do sistema &  &  &  & X & X \\
+\hline
+Análise dos resultados e redação do artigo &  &  &  & X & X \\
+\hline
+\end{tabular}
+{\footnotesize\\ \textbf{Fonte: Elaborado pelos autores.}}
+\end{table}
+
+
+

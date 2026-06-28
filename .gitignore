@@ -26,9 +26,6 @@ CLAUDE.md
 *.ilg
 *.dvi
 
-# PDF compilado (gerado a partir do .tex)
-principal.pdf
-
 # Sistema operacional
 .DS_Store
 Thumbs.db
