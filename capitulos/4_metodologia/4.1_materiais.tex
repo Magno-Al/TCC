@@ -5,9 +5,9 @@ A plataforma de processamento é responsável pela execução do sistema
 operacional embarcado, pela aquisição dos sinais fisiológicos, pelo 
 processamento dos dados coletados, pelo cálculo do escore NEWS2 e pela 
 execução dos modelos de aprendizado de máquina empregados na predição de 
-deterioração clínica. Com isso, foi escolhido a Raspberry Pi 3B+, uma vez que possui ampla documentação ao Buildroot, comunidade ativa, mémoria RAM de 1GB, arquitetura 
-quad-core de 64 bits a 1,4 GHz e disponibilidade nativa de interfaces 
-I\textsuperscript{2}C, SPI, HDMI e DSI
+deterioração clínica. Com isso, foi escolhida a Raspberry Pi 3B+, uma vez que possui ampla documentação para o Buildroot, comunidade ativa, memória RAM de 1 GB, arquitetura 
+quad-core de 64 bits a 1,4 GHz e disponibilidade nativa de interfaces
+I\textsuperscript{2}C, SPI, HDMI e DSI.
 
 % Sensoriamento
 A partir dessa plataforma, a extração dos parâmetros do NEWS2 é realizada por dois sensores. O sensor PPG MAX30102 reúne LEDs vermelho e infravermelho — que viabilizam a extração da SpO\textsubscript{2} — em um encapsulamento compacto, com ADC de 18 bits e baixo custo. Sua interface I\textsuperscript{2}C é nativamente suportada pelo kernel Linux, dispensando \textit{frameworks} de terceiros e viabilizando a implementação de um \textit{driver} dedicado em C++. Já o sensor de temperatura DS18B20 oferece resolução configurável de até 12 bits, correspondente a incrementos de 0,0625°C, e precisão de ±0,5°C na faixa de operação corporal. Sua interface digital 1-Wire, também suportada nativamente pelo kernel, dispensa ADC externo e permite a leitura da temperatura diretamente via sistema de arquivos, simplificando a integração ao sistema embarcado.
@@ -43,9 +43,9 @@ Quanto aos materiais, o Ácido Polilático (PLA, do inglês \textit{Polylactic A
 
 
 % Ferramentas de software
-No âmbito do software, o sistema embarcado, responsável pela comunicação com os sensores, pelo processamento dos sinais e pelo cálculo do NEWS2, foi desenvolvido em C++, escolhido por seu desempenho e controle fino sobre memória, determinantes em ambientes com recursos computacionais limitados (KNUTTILA; XU; MICROSOFT, 2012). O Buildroot foi selecionado como \textit{toolchain} de \textit{cross-compilação} para a construção de um sistema operacional personalizável baseado em Linux, em razão do desempenho demonstrado em trabalhos correlatos (OZTURK et al., 2023).
+No âmbito do software, o sistema embarcado, responsável pela comunicação com os sensores, pelo processamento dos sinais e pelo cálculo do NEWS2, foi desenvolvido em C++, escolhido por seu desempenho e controle fino sobre memória, determinantes em ambientes com recursos computacionais limitados \cite{knuttila2012functional}. O Buildroot foi selecionado como \textit{toolchain} de \textit{cross-compilação} para a construção de um sistema operacional personalizável baseado em Linux, em razão do desempenho demonstrado em trabalhos correlatos \cite{ozturk2023}.
 
-Para os algoritmos de aprendizado de máquina, adotou-se a linguagem Python, consolidada nesse domínio por seu ecossistema robusto de bibliotecas especializadas e por favorecer a prototipagem rápida. Por fim, a interface gráfica embarcada foi desenvolvida com o \textit{framework} Qt, mantendo o C++ já adotado no restante do sistema embarcado, combinação madura e amplamente utilizada em sistemas embarcados (PROJECT, 2024).
+Para os algoritmos de aprendizado de máquina, adotou-se a linguagem Python, consolidada nesse domínio por seu ecossistema robusto de bibliotecas especializadas e por favorecer a prototipagem rápida. Por fim, a interface gráfica embarcada foi desenvolvida com o \textit{framework} Qt, mantendo o C++ já adotado no restante do sistema embarcado, combinação madura e amplamente utilizada em sistemas embarcados \cite{qtAbout}.
 
 % O Buildroot foi selecionado como toolchain de cross-compilação para o desenvolvimento de um sistema operacional personalizável baseado em Linux, devido ao desempenho demonstrado em trabalhos correlatos, como o de \citeonline{ozturk2023}. Para viabilizar o projeto de uma Placa de Circuito Impresso (PCB, do inglês \textit{Printed Circuit Board}), foi selecionado o Autodesk Fusion, uma vez que possui a ferramenta de Automação de Projetos Eletrônicos (EDA, do inglês \textit{Electronic Design Automation}), além de possuir uma curva de aprendizado rápida, interface intuitiva, licenciamento gratuito e um desenvolvimento colaborativo em nuvem.
 

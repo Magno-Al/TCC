@@ -83,6 +83,16 @@ Dispon{\'\i}vel em:
   Electrical Equipment -- Part 1: General Requirements for Basic Safety and
   Essential Performance}. Geneva, Switzerland, 2020.}
 
+\bibitem[Knuttila, Xu e Microsoft 2012]{knuttila2012functional}
+\abntrefinfo{Knuttila, Xu e Microsoft}{KNUTTILA; XU; MICROSOFT}{2012}
+{KNUTTILA, F.~S.; XU, K.; MICROSOFT. {C++}: Programação em estilo funcional
+  em {C++}.
+\textbf{MSDN Magazine}, ago. 2012.
+Acesso em: 31 mai. 2026.
+Dispon{\'\i}vel em:
+  \url{https://learn.microsoft.com/pt-br/archive/msdn-magazine/2012/august/c-functional-style-programming-in-c}.
+  Acesso em: 31 mai. 2026.}
+
 \bibitem[{L4B Software} 2021]{l4b2021linux}
 \abntrefinfo{{L4B Software}}{{L4B Software}}{2021}
 {{L4B Software}. \textbf{Why choosing Linux for your Medical Devices?} 2021.
@@ -122,6 +132,13 @@ Dispon{\'\i}vel em:
   Buildroot}.
 2022. Disserta\c{c}\~{a}o (Mestrado em Ciência da Computação) --- Aalto
   University, Espoo, Finlândia, 2022. Orientador: Vesa Hirvisalo.}
+
+\bibitem[Project 2024]{qtAbout}
+\abntrefinfo{Project}{PROJECT}{2024}
+{PROJECT, Q. \textbf{About Qt/pt}. 2024.
+Acesso em: 31 mai. 2026.
+Dispon{\'\i}vel em: \url{https://wiki.qt.io/About\_Qt/pt}. Acesso em: 31 mai.
+  2026.}
 
 \bibitem[Rancea, Anghel e Cioara 2024]{rancea2024edge}
 \abntrefinfo{Rancea, Anghel e Cioara}{RANCEA; ANGHEL; CIOARA}{2024}
