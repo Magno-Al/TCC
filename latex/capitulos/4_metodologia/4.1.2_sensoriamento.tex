@@ -1,0 +1,64 @@
+\subsubsection{Sensoriamento}
+
+Para se extrair os múltiplos parâmetros do NEWS2, optou-se pelo uso de dois sensores: o MAX30102, um sensor PPG, e o DS18B20, um sensor de temperatura corporal. Por meio do PPG, uma tecnologia barata e não invasiva, é possível se extrair a partir de um sinal dois parâmetros de maneira direta (SpO\textsubscript{2} e FC) e dois parâmetros de maneira indireta (FR e PA) \cite{allen2007photoplethysmography}. A Tabela 3 compara sensores PPG considerados para este trabalho, avaliando interface de comunicação, LEDs integrados, resolução do conversor analógico-digital (ADC), suporte nativo a SpO\textsubscript{2}, custo relativo e status do componente junto ao fabricante.
+
+\begin{table}[H]
+\centering
+\caption{Comparativo entre sensores PPG do mercado}
+\label{tableComparativoSensoresPPG}
+\begin{tabular}{ |l|c|c|c|c|c|c| }
+    \hline
+    \textbf{Sensor} & \textbf{Interface} & \textbf{LEDs} & \textbf{ADC} & \textbf{SpO\textsubscript{2}} & \textbf{Custo} & \textbf{Status} \\
+    \hline
+    MAX30100 & I\textsuperscript{2}C & Vermelho + IV & 16 bits & Sim & Baixo & Descontinuado \\
+    BH1792GLC & I\textsuperscript{2}C & Verde & --- & Não & Médio & Descontinuado \\
+    AFE4490 & SPI & Externos & 22 bits & Sim & Alto & Ativo \\
+    \textbf{MAX30102} & I\textsuperscript{2}C & Vermelho + IV & 18 bits & Sim & Baixo & Ativo \\
+    \hline
+\end{tabular}
+{\footnotesize \textbf{Fonte: \cite{max30100} \cite{bh1792glc} \cite{afe4490} \cite{max30102} }}
+\end{table}
+
+O MAX30102 se destaca entre os analisados por reunir LEDs vermelho e infravermelho - que viabilizam a extração da SpO\textsubscript{2} - em um encapsulamento compacto, ADC de 18 bits e baixo custo. Além disso, sua interface I\textsuperscript{2}C é nativamente suportada pelo kernel Linux, dispensando \textit{frameworks} de terceiros e viabilizando a implementação de um \textit{driver} dedicado em C++.
+
+Para a medição de temperatura corporal, optou-se por um sensor dedicado. Embora o MAX30102 possua um sensor de temperatura interno, este não reflete a temperatura corporal central, sendo influenciado pelo fluxo sanguíneo periférico e pelas condições ambientais \cite{sadeghi2025wearable}, o que o torna inadequado para o cálculo do escore NEWS2, que requer uma medição clínica confiável. A Tabela 4 compara sensores de temperatura considerados para este trabalho, avaliando faixa de medição, resolução, interface de comunicação e adequação ao contato com a superfície corporal.
+
+\begin{table}[H]
+\centering
+\caption{Comparativo entre sensores de temperatura do mercado}
+\label{tableComparativoSensoresTemp}
+\begin{tabular}{ |l|c|c|c|c|c|c| }
+    \hline
+    \textbf{Sensor} & \textbf{Tipo} & \textbf{Interface} & \textbf{Precisão} & \textbf{Resolução} & \textbf{Custo} & \textbf{Status} \\
+    \hline
+    LM35    & Contato & Analógica  & ±0,75°C & 10 mV/°C   & Baixo  & Ativo \\
+    MLX90614 & Infravermelho & I\textsuperscript{2}C/PWM & ±0,5°C  & 0,02°C     & Médio  & Ativo \\
+    \textbf{DS18B20} & Contato & 1-Wire & ±0,5°C  & até 0,0625°C & Baixo  & Ativo \\
+    \hline
+\end{tabular}
+{\footnotesize\\ \textbf{Fonte: \cite{lm35} \cite{mlx90614} \cite{ds18b20}}}
+\end{table}
+
+O DS18B20 se destaca entre os analisados por apresentar resolução configurável de até 12 bits, correspondendo a incrementos de 0,0625°C, e precisão de ±0,5°C na faixa de operação corporal. Sua interface digital 1-Wire, nativamente suportada pelo kernel Linux por meio do driver \texttt{w1-therm}, dispensa ADC externo e permite a leitura da temperatura diretamente via sistema de arquivos, simplificando a integração ao sistema embarcado.
+
+%Justificar o uso de PPG como sensoriamento central pela natureza não invasiva, baixo custo e capacidade de extração simultânea de múltiplos parâmetros do NEWS2 a partir de um único sinal (Allen, 2007; Sadeghi et al., 2025). Detalhar os parâmetros derivados do PPG (FC, SpO₂, FR e PA estimada) e os parâmetros que não são cobertos pelo sensor (temperatura, nível de consciência e uso de O₂ suplementar) — explicitar a estratégia adotada para cada um.
+
+%Sensor PPG escolhido: MAX30102 — justificar por integração I²C, dupla emissão LED vermelho/IR para cálculo de SpO₂, custo acessível e base instalada na literatura.
+
+%Alternativas para citar:
+%SUAVEEE, vou mandar ali no grupo tb
+%MAX30100 (descontinuado, sem IR adequado para SpO₂ confiável)
+
+%MAX30105 (mais caro, três LEDs — overkill para o escopo)
+
+%AFE4490 (grau médico, custo elevado)
+
+%Sensor de temperatura escolhido: DS18B20 — justificar por barramento 1-Wire, leitura digital direta, faixa clínica adequada, custo.
+
+%Alternativas para citar:
+
+%MLX90614 (IR sem contato, evita contaminação cruzada, ~7× mais caro)
+
+%LM35 (analógico, exige ADC externo)
+
+%Definir: ponto de fixação do PPG (clipe de dedo padrão clínico) e local da aferição de temperatura (axilar vs. testa).

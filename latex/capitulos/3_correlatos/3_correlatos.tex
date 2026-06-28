@@ -1,0 +1,43 @@
+\section{Trabalhos Correlatos}
+\label{Correlatos}
+
+A predição da deterioração clínica de pacientes hospitalizados por meio de técnicas computacionais tem sido amplamente investigada nos últimos anos. Esta seção apresenta uma revisão de trabalhos correlatos, selecionados por sua similaridade nos objetivos, por explorarem abordagens baseadas em aprendizado de máquina para análise de sinais vitais ou por investigarem o uso de sistemas embarcados e computação em borda na área da saúde.
+
+\citeonline{weenk2020} investigam o monitoramento contínuo de sinais vitais em enfermarias e demonstram que ele pode reduzir eventos adversos quando comparado a medições intermitentes. Entretanto, tais sistemas geralmente não incorporam modelos preditivos embarcados, limitando-se à coleta e à exibição instantânea dos dados.
+
+\citeonline{salehinejad} aplicaram técnicas de aprendizado de máquina sobre a trajetória longitudinal do \textit{Deterioration Index} (DI), um escore de deterioração clínica calculado no prontuário eletrônico, para prever eventos adversos. Dentre os classificadores avaliados, o XGBoost obteve o melhor desempenho (AUC, do inglês \textit{Area Under the Curve}, de 0,94), superando a aplicação de um limiar fixo sobre o escore. Entretanto, a dependência do DI --- escore proprietário do prontuário --- limita a reprodução do método em outras instituições.
+ 
+\citeonline{scheid2025wearable} desenvolveram um modelo de aprendizado profundo baseado em dispositivos \textit{wearables} que utiliza sinais vitais e dados demográficos como entrada para uma rede neural recorrente (LSTM), prevendo eventos adversos com antecedência de até 17 horas (AUC de 0,89). Apesar dos resultados promissores, a solução depende de infraestrutura computacional mais robusta e não foi projetada para execução totalmente embarcada na borda.
+
+\citeonline{sadeghi2025wearable} propõem um dispositivo \textit{wearable} de baixo custo baseado em um único sensor PPG, o MAX30102, capaz de mensurar FC, SpO\textsubscript{2} e estimar temperatura, além de empregar um modelo \textit{Random Forest} para estimar PA e FR. O sistema classifica os sinais vitais em níveis codificados por cores inspirados no padrão NEWS, contudo não realiza o cálculo do escore agregado nem contempla a predição de risco do paciente.
+
+
+%Diversos trabalhos já demonstram a utilidade prática de Modelos de automação e predição em embarcados aplicados à área de deterioração clínica na saúde.\cite{muralitharan} Realizaram um estudo entre publicações envolvendo temas como deterioração clínica, sinais vitais e Machine Learning, concluindo que os modelos inteligentes de predição possuem acurácia e alcançabilidade muito maior que modelos agregados de ponderação.\cite{horng} Utilizaram um modelo de Support Vector Machine (SVM) para desenvolver um gatilho automatizado de sepse no pronto-socorro, com base em sinais vitais, queixa principal e texto livre da triagem de enfermagem. \cite{silveira} Aplicaram o algoritmo Random Forest para predição da  mortalidade de pacientes em UTI, utilizando sinais clínicos e exames laboratoriais.\cite{abulkerim} Modulou diversas análises com algoritmos preditivos supervisionados, para apoiar médicos a tomarem decisões sobre o grau de risco em pacientes que sofreram infarto agudo com supradesnivelamento. Esses e outros mais estudos evidenciam o potencial da tecnologia para extrair padrões complexos de dados médicos e contribuir para intervenções mais rápidas e precisas no cuidado, monitoramento e prevenção ao paciente.%
+
+\citeonline{giordano2024sepal} apresentam o SepAl, um sistema de predição precoce de sepse baseado em TinyML e executado diretamente em \textit{wearables}, com uma rede neural convolucional temporal quantizada em um processador ARM Cortex-M33, capaz de prever eventos sépticos com antecedência média de 9,8 horas. O estudo evidencia o potencial da computação em borda aplicada à saúde, porém concentra-se na predição de sepse, sem contemplar protocolos de alerta precoce como EWS ou NEWS.
+
+\citeonline{ozturk2023} detalha o projeto de um monitor de beira de leito construído sobre um sistema operacional Linux embarcado dedicado, demonstrando a eficácia do \textit{Buildroot} na compilação cruzada (do inglês \textit{cross-compiling}) para a arquitetura ARM, com ganhos de latência e consumo de recursos. O presente trabalho parte das mesmas premissas, mas avança o estado da técnica ao usar essa base não apenas para telemetria, e sim para o processamento preditivo local (computação em borda), aplicando o protocolo NEWS2 de forma nativa e autônoma.
+
+Em síntese, os trabalhos correlatos concentram-se isoladamente em análise preditiva, monitoramento contínuo ou sistemas embarcados, sem integrar escores clínicos consolidados (EWS/NEWS) à execução de modelos preditivos diretamente na borda. A Tabela~\ref{tableCorrelatos} sintetiza essas características.
+
+\begin{table}[H]
+\centering
+\caption{Comparação entre os trabalhos correlatos quanto ao uso de monitoramento contínuo (Monit.), aprendizado de máquina (ML), protocolos EWS, sistemas embarcados, computação em borda (Edge) e sistemas operacionais customizados (SO Custom.).}
+\label{tableCorrelatos}
+\begin{tabular}{ |l|c|c|c|c|c|c| }
+    \hline
+    \textbf{Trabalho} & \textbf{Monit.} & \textbf{ML} & \textbf{EWS} & \textbf{Embarcados} & \textbf{Edge} & \textbf{SO Custom.} \\
+    \hline
+    Weenk et al. (2020)         & Sim & Não & Não       & Não & Parcial & Não \\
+    Salehinejad et al. (2023)   & Sim & Sim & Não       & Não & Não     & Não \\
+    Scheid et al. (2025)        & Sim & Sim & Não       & Parcial & Parcial     & Não \\
+    Sadeghi et al. (2025)       & Sim & Sim & Parcial   & Sim & Parcial & Não \\
+    Giordano et al. (2024)      & Sim & Sim & Não       & Sim & Sim & Não \\
+    OZTURK et al. (2023)        & Sim & Não & Não       & Sim & Parcial & Sim \\
+    \textbf{Este trabalho}      & Sim & Sim & Sim       & Sim & Sim     & Sim \\
+    \hline
+\end{tabular}
+{\footnotesize\\ \textbf{Fonte: Elaborado pelos autores.}}
+\end{table}
+
+Como evidenciado na Tabela~\ref{tableCorrelatos}, nenhum dos trabalhos analisados reúne, em uma única solução, a aquisição contínua de sinais vitais, o cálculo nativo do NEWS2 e a predição na borda sobre um sistema operacional embarcado customizado. É justamente essa lacuna que o presente trabalho busca preencher.
