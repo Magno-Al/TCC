@@ -1,2 +1,12 @@
-\section{Resultados e Discussão}
+\section{Resultados Preliminares}
 \label{Resultados}
+
+Esta seção apresenta os resultados alcançados ao longo do TCC I, organizados em três frentes desenvolvidas de forma paralela: a definição e aquisição do \textit{hardware}, a configuração do sistema operacional embarcado e a engenharia de dados que fundamenta o modelo preditivo, principal resultado desta etapa.
+
+No âmbito do \textit{hardware}, o conjunto de componentes do dispositivo foi integralmente definido e adquirido, incluindo a plataforma de processamento Raspberry Pi 3B+, os sensores MAX30102 e DS18B20, o \textit{display} Waveshare de 7 polegadas e os periféricos de alerta. Em paralelo, a impressão 3D do invólucro foi iniciada, com as primeiras iterações voltadas a avaliar o acomodamento dos componentes e o posicionamento dos sensores, etapa que será concluída na montagem final do protótipo.
+
+Quanto ao \textit{software} de base, foi definida a configuração da imagem do sistema operacional embarcado no Buildroot, incluindo a arquitetura-alvo da Raspberry Pi 3B+ e o conjunto de pacotes necessário à aplicação: a base mínima de sistema, as bibliotecas do \textit{framework} Qt, o \textit{runtime} de C++, os módulos de comunicação com os sensores e as dependências de execução do modelo. A definição desses pacotes estabelece a base reprodutível a partir da qual a imagem será gerada e consolidada nas etapas seguintes.
+
+O principal resultado desta etapa foi a construção da engenharia de dados que sustenta o modelo preditivo. A partir do conjunto público de pacientes hospitalizados, os dados foram consolidados e normalizados em um único arquivo estruturado. Como a base disponibiliza as variáveis fisiológicas, mas não o escore NEWS2, este é calculado dinamicamente durante o pré-processamento e incorporado como variável-alvo, sem ser persistido na base original, recurso restrito à fase de treinamento. O pré-processamento contempla ainda a remoção de ruídos e a padronização das variáveis, preparando o conjunto para o treinamento e a comparação dos modelos previstos. Essa frente concentra o maior avanço do trabalho, pois define o \textit{pipeline} desde os dados brutos até a entrada pronta para o aprendizado de máquina, restando para o TCC II o treinamento, a avaliação e o embarque do modelo no dispositivo.
+
+Em conjunto, os resultados preliminares confirmam a viabilidade das três frentes do projeto e a consistência entre elas: os componentes necessários estão disponíveis e o invólucro em prototipagem, os pacotes do ambiente de execução embarcado estão definidos e a base de dados está normalizada e em pré-processamento para o treinamento do modelo.

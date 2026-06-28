@@ -1,1 +1,9 @@
-\section{Cronograma e Considerações Finais}
+\section{Conclusão}
+
+Este trabalho propôs um sistema embarcado para o monitoramento contínuo de sinais vitais e a predição da deterioração clínica intra-hospitalar, integrando, em uma única solução de beira de leito, o cálculo nativo do escore NEWS2 e a sua predição por aprendizado de máquina executados diretamente na borda, sobre um sistema operacional Linux customizado.
+
+Ao longo do TCC I, as bases para essa solução foram estabelecidas: o \textit{hardware} foi definido e adquirido, com a impressão do invólucro iniciada; os pacotes do sistema operacional embarcado foram definidos no Buildroot; e a engenharia de dados que sustenta o modelo preditivo avançou de forma significativa, com a base já normalizada e o pré-processamento em desenvolvimento. Esses avanços confirmam a viabilidade técnica da proposta e a articulação entre suas três frentes de desenvolvimento.
+
+A principal contribuição do trabalho reside na integração de elementos que a literatura correlata trata de forma isolada: a aquisição contínua de sinais, o cálculo de um escore clínico consolidado e a execução de modelos preditivos na borda, suportados por um sistema operacional embarcado customizado.
+
+No TCC II, o trabalho será finalizado com a montagem definitiva do dispositivo, o treinamento e a avaliação dos modelos preditivos e a validação do sistema integrado. Nessa etapa, pretende-se conduzir comparações que evidenciem o desempenho da solução, entre elas: o confronto entre os três modelos de aprendizado de máquina adotados (regressão logística, XGBoost e LSTM), a comparação da predição por aprendizado de máquina com o NEWS2 calculado de forma tradicional, e a avaliação da latência e do consumo de recursos da inferência embarcada. Espera-se, com isso, demonstrar que a solução proposta oferece um monitoramento contínuo, automatizado e antecipativo, capaz de ampliar a janela de intervenção da equipe assistencial e de contribuir para a segurança do paciente em ambiente hospitalar.
