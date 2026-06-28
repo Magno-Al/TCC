@@ -1,0 +1,29 @@
+\section{Fundamentação Teórica}
+\label{fundamentao}
+
+% precisamos falar: 
+% embarcado (teórico)
+% sensores hardware
+% sistema operacional
+% ml e algoritmos
+
+% Embarcado
+Um sistema embarcado é um sistema computacional dedicado, composto por hardware e software, projetado para executar funções específicas e, diferentemente de computadores tradicionais, esses sistemas interagem continuamente com o mundo real por meio de sensores e atuadores \cite{LEE200255}. Com isso, a concepção de sistemas embarcados dedicados é fundamental para aplicações que demandam alta confiabilidade e otimização rigorosa de recursos computacionais \cite{embedesSystem}. 
+
+% Sensores
+Em complemento, a aquisição confiável de sinais fisiológicos é essencial para o funcionamento do sistema. Segundo \citeonline{allen2007photoplethysmography}, a fotopletismografia (PPG, do inglês \textit{Photoplethysmography}) é uma técnica óptica não invasiva e de baixo custo amplamente empregada em dispositivos médicos para a detecção de variações no volume sanguíneo no leito microvascular do tecido. O princípio de funcionamento se baseia na iluminação de um tecido periférico — tipicamente o dedo, o lóbulo da orelha ou o pulso — por meio de um diodo emissor de luz (LED, do inglês \textit{Light Emitting Diode}), enquanto um fotodetector mede a intensidade da luz transmitida ou refletida. Como a absorção de luz pelo sangue varia com cada batimento cardíaco, o sinal resultante apresenta dois componentes: um componente pulsátil (AC), sincronizado com os ciclos cardíacos, e uma linha de base lentamente variável (DC), associada à respiração, à atividade do sistema nervoso simpático e à termorregulação.
+
+
+% SO
+Além disso, este projeto propõe a construção de um equipamento operando sob um sistema operacional Linux embarcado, estruturado a partir de sistemas de construção (\textit{build systems}), como o \textit{Buildroot}. Essa abordagem de customização em nível de sistema operacional permite extrair o máximo desempenho, estabilidade, segurança e previsibilidade do \textit{hardware} disponível, gerando uma imagem de sistema enxuta que reduz o consumo de memória e os custos de implementação requisitos mandatórios para o funcionamento de dispositivos médicos críticos \cite{pera2022buildroot, l4b2021linux}.
+
+% ML
+Ademais, para o processamento em tempo real na borda, este projeto também propõe o uso de técnicas de Aprendizagem de Máquina, para a análise automatizada e preditiva de dados da saúde. \cite{veldhius} Realizaram uma revisão sistemática em 45 artigos da área da saúde e concluíram que o uso de ML contribuiu para a detecção de deterioração clínica, admissão de pacientes em UTI e estimativa de mortalidade, auxiliando médicos e profissionais da saúde na tomada de decisões mais precisas e oportunas. 
+
+%Essa prática tem sido amplamente aplicada na área da saúde para a análise de dados clínicos e fisiológicos, especialmente em tarefas de predição de eventos adversos \cite{beaulieu2021}. Um dos maiores desafios é a utilização destas técnicas em um contexto de hardware mais limitado, que não. Nesse cenário, a título de exemplo, destaca-se a integração dessas técnicas com o EWS, amplamente utilizadas para a estratificação de risco em pacientes hospitalizados.%
+
+Os modelos de ML são capazes de aprender padrões complexos a partir de dados históricos, permitindo maior flexibilidade e potencial de generalização para análise de sinais fisiológicos \cite{churpek2016}. Sua aplicação busca complementar e aprimorar os métodos tradicionais por meio de sua capacidade preditiva, especialmente em cenários com maior disponibilidade de dados contínuos. Entretanto, o uso destas técnicas podem ser computacionalmente custoso, o que traz desafios para sua aplicação eficiente em hardwares de menor capacidade.
+
+No cenário do monitoramento de sinais vitais, algoritmos supervisionados utilizam dados rotulados para estabelecer relações entre variáveis fisiológicas e diagnósticos clínicos, possibilitando a identificação precoce de padrões associados à deterioração do paciente \cite{nemati2018}. A proposta destes modelos visa correlacionar um conjunto de variáveis de entrada, estimando um parâmetro de saída. Essa característica torna essas abordagens particularmente adequadas para sistemas embarcados de monitoramento contínuo, nos quais grandes volumes de dados são gerados e processados em tempo real \cite{haveman2022}.
+
+Apesar de o EWS ser um sistema consolidado e amplamente utilizado na estratificação de risco clínico, sua principal limitação reside no caráter pontual e intermitente das aferições, em que o escore reflete apenas o estado fisiológico do paciente no momento da medição, sem considerar a trajetória dos sinais vitais ao longo do tempo nem o histórico clínico individual \cite{muralitharan}. Essa característica pode resultar em atrasos na detecção de deterioração, especialmente em enfermarias onde a monitorização tradicional ocorre apenas algumas vezes ao dia. Nesse contexto, a integração entre modelos de ML e sistemas de aquisição contínua de sinais fisiológicos permite superar essa limitação, possibilitando não apenas o cálculo automatizado do EWS em tempo real, mas também a predição antecipada de seu valor futuro com base no histórico de medições do paciente \cite{salehinejad}. Essa abordagem viabiliza uma análise mais precisa, contínua e antecipada do risco clínico, ampliando a janela de intervenção disponível para a equipe de saúde.
